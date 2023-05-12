@@ -1,6 +1,6 @@
 import psycopg2, csv
 
-conn = psycopg2.connect(host="localhost", database="north", user="postgres", password=None)
+conn = psycopg2.connect(host="localhost", database="nort", user="postgres", password=None)
 
 cursor = conn.cursor()
 
