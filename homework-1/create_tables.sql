@@ -1,10 +1,11 @@
 create table employees
 (
- first_name varchar(50) primary key,
+ first_name varchar(50) not NULL,
  last_name varchar(50) not NULL,
  title varchar(50) not NULL,
  birth_date date not NULL,
- notes text
+ notes text,
+ id serial  primary key references employees(id)
 );
 
 create table customers
@@ -18,7 +19,7 @@ create table orders
 (
 order_id int primary key,
 customer_id varchar(50) REFERENCES customers(customer_id),
-employee_id int ,
+employee_id int,
 order_date date not NULL,
-ship_city varchar(50) not NULL
+ship_city varchar(50) not null
 );
