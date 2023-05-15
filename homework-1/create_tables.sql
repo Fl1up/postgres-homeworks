@@ -5,7 +5,7 @@ create table employees
  title varchar(50) not NULL,
  birth_date date not NULL,
  notes text,
- id serial  primary key references employees(id)
+ id serial primary key
 );
 
 create table customers
@@ -15,11 +15,12 @@ company_name text,
 contact_name text
 );
 
-create table orders
+CREATE TABLE orders
 (
-order_id int primary key,
-customer_id varchar(50) REFERENCES customers(customer_id),
-employee_id int,
-order_date date not NULL,
-ship_city varchar(50) not null
+order_id INT PRIMARY KEY,
+customer_id VARCHAR(50) REFERENCES customers(customer_id),
+employee_id INT REFERENCES employees(id),
+order_date DATE NOT NULL,
+ship_city VARCHAR(50) NOT NULL,
+FOREIGN KEY (employee_id) REFERENCES employees(id)
 );

@@ -1,6 +1,6 @@
 import psycopg2, csv
 
-conn = psycopg2.connect(host="localhost", database="nort", user="postgres", password=None)
+conn = psycopg2.connect(host="localhost", database="nor", user="postgres", password=None)
 
 cursor = conn.cursor()
 
@@ -20,10 +20,7 @@ with open('north_data/orders_data.csv', 'r') as f:
     reader = csv.reader(f)
     next(reader)
     for row in reader:
-        if row == "psycopg2.errors.UniqueViolation: ОШИБКА:":
-            pass
-        else:
-            cursor.execute("INSERT INTO orders  VALUES (%s, %s, %s, %s, %s)", row)
+        cursor.execute("INSERT INTO orders  VALUES (%s, %s, %s, %s, %s)", row)
 
 conn.commit()
 conn.close()
