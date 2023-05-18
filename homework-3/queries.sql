@@ -4,7 +4,7 @@
 select CONCAT(first_name, ' ', last_name),customers.company_name
 from customers
 join orders on customers.customer_id  = orders.customer_id
-join employees on orders.employee_id = employees.employee_id
+join employees USING(employee_id)
 join shippers on orders.ship_via = shippers.shipper_id
 where customers.city = 'London'
 and employees.city  = 'London'
